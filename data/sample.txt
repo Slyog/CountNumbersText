@@ -1,0 +1,4 @@
+This is a simple sample text file.
+It contains a few words across multiple lines,
+so the program can count them as expected.
+
