@@ -1,0 +1,42 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log
+
+# Env files
+.env
+.env.*
+
+# Node
+node_modules/
+dist/
+build/
+.cache/
+npm-debug.log*
+yarn-*.log*
+pnpm-*.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+*.egg
+build/
+dist/
+.mypy_cache/
+.pytest_cache/
+.coverage*
+coverage.xml
+.tox/
+pip-log.txt
+
