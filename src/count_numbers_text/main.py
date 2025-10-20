@@ -16,6 +16,11 @@ def default_sample_path() -> Path:
     return repo_root / "data" / "sample.txt"
 
 
+def default_output_path() -> Path:
+    repo_root = Path(__file__).resolve().parents[2]
+    return repo_root / "data" / "output.txt"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Count words in a text file")
     parser.add_argument(
@@ -25,15 +30,28 @@ def main() -> None:
         default=None,
         help="Path to the text file (defaults to data/sample.txt)",
     )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default=None,
+        help="Write result to this file (defaults to data/output.txt)",
+    )
     args = parser.parse_args()
 
     file_path = args.file or default_sample_path()
+    output_path = args.output or default_output_path()
 
     if not file_path.exists():
         raise SystemExit(f"File not found: {file_path}")
 
     total = count_words(file_path)
-    print(f"Word count: {total}")
+    message = f"Word count: {total}"
+    print(message)
+
+    # Ensure parent directory exists and write message to file
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(message + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
